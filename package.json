@@ -1,0 +1,47 @@
+{
+  "name": "mobile-web-testing-framework",
+  "version": "1.0.0",
+  "description": "A modular, open-source wrapper around Selenium WebDriver (v4+) for responsive mobile web testing using Chrome DevTools Protocol emulation — no Appium required.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js --timeout 30000",
+    "test:verbose": "mocha tests/**/*.test.js --timeout 30000 --reporter spec",
+    "example": "mocha examples/basicUsage.js --timeout 30000",
+    "lint": "eslint src/ tests/"
+  },
+  "keywords": [
+    "selenium",
+    "mobile-testing",
+    "webdriver",
+    "cdp",
+    "chrome-devtools-protocol",
+    "responsive-testing",
+    "mobile-emulation",
+    "automation",
+    "testing-framework",
+    "mobile-web"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.27.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.8.2",
+    "chai": "^4.5.0"
+  },
+  "files": [
+    "index.js",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
+}

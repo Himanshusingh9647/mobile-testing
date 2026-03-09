@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+.env
+*.log
+coverage/
+.nyc_output/
+dist/
+.DS_Store
+Thumbs.db

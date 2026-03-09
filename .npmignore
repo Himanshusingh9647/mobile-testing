@@ -1,0 +1,7 @@
+tests/
+examples/
+.mocharc.yml
+.gitignore
+.eslintrc.*
+coverage/
+.nyc_output/

@@ -1,0 +1,4 @@
+spec:
+  reporter: spec
+timeout: 30000
+recursive: true
