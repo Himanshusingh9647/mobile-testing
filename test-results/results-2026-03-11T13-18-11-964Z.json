@@ -1,0 +1,572 @@
+{
+  "suiteName": "Mobile Web Testing Framework",
+  "startTime": "2026-03-11T13:18:11.964Z",
+  "endTime": "2026-03-11T13:18:59.198Z",
+  "summary": {
+    "total": 62,
+    "passed": 61,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 47234
+  },
+  "results": [
+    {
+      "title": "should load the correct device profile for iPhone 15",
+      "suite": "Device Profile",
+      "status": "passed",
+      "duration": 8,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:15.118Z"
+    },
+    {
+      "title": "should return a copy of the profile (immutable)",
+      "suite": "Device Profile",
+      "status": "passed",
+      "duration": 2,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:15.139Z"
+    },
+    {
+      "title": "should report the correct emulated user agent",
+      "suite": "Device Profile",
+      "status": "passed",
+      "duration": 21,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:15.161Z"
+    },
+    {
+      "title": "should navigate to example.com and verify the page title",
+      "suite": "Navigation",
+      "status": "passed",
+      "duration": 6945,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:22.110Z"
+    },
+    {
+      "title": "should return the correct current URL after navigation",
+      "suite": "Navigation",
+      "status": "passed",
+      "duration": 59,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:22.171Z"
+    },
+    {
+      "title": "should handle navigation via the MobileDriver API",
+      "suite": "Navigation",
+      "status": "passed",
+      "duration": 59,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:22.232Z"
+    },
+    {
+      "title": "should perform a swipe-up gesture without errors",
+      "suite": "Touch Gestures",
+      "status": "passed",
+      "duration": 744,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:23.056Z"
+    },
+    {
+      "title": "should perform a swipe-down gesture without errors",
+      "suite": "Touch Gestures",
+      "status": "passed",
+      "duration": 723,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:23.828Z"
+    },
+    {
+      "title": "should perform a swipe-left gesture without errors",
+      "suite": "Touch Gestures",
+      "status": "passed",
+      "duration": 710,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:24.597Z"
+    },
+    {
+      "title": "should perform a swipe-right gesture without errors",
+      "suite": "Touch Gestures",
+      "status": "passed",
+      "duration": 712,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:25.353Z"
+    },
+    {
+      "title": "should scroll down using scrollByPixels utility",
+      "suite": "Touch Gestures",
+      "status": "passed",
+      "duration": 425,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:25.817Z"
+    },
+    {
+      "title": "should scroll by a custom pixel amount",
+      "suite": "Touch Gestures",
+      "status": "passed",
+      "duration": 429,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:26.303Z"
+    },
+    {
+      "title": "should tap the \"More information...\" link and navigate",
+      "suite": "Touch Gestures",
+      "status": "failed",
+      "duration": 30008,
+      "error": "Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\Users\\himan\\OneDrive\\Desktop\\Devops Mobile Testing\\tests\\example.test.js)",
+      "stack": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\Users\\himan\\OneDrive\\Desktop\\Devops Mobile Testing\\tests\\example.test.js)\n    at listOnTimeout (node:internal/timers:581:17)\n    at process.processTimers (node:internal/timers:519:7)",
+      "timestamp": "2026-03-11T13:18:56.361Z"
+    },
+    {
+      "title": "should take a screenshot and return base64 data",
+      "suite": "Screenshots",
+      "status": "passed",
+      "duration": 1993,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.354Z"
+    },
+    {
+      "title": "should save a screenshot to disk",
+      "suite": "Screenshots",
+      "status": "passed",
+      "duration": 364,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.720Z"
+    },
+    {
+      "title": "should report mobile-sized viewport dimensions",
+      "suite": "Viewport & Responsive",
+      "status": "passed",
+      "duration": 70,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.792Z"
+    },
+    {
+      "title": "should report a mobile device pixel ratio",
+      "suite": "Viewport & Responsive",
+      "status": "passed",
+      "duration": 16,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.808Z"
+    },
+    {
+      "title": "should report touch support as enabled",
+      "suite": "Viewport & Responsive",
+      "status": "passed",
+      "duration": 16,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.829Z"
+    },
+    {
+      "title": "should execute arbitrary JavaScript and return results",
+      "suite": "Script Execution",
+      "status": "passed",
+      "duration": 14,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.844Z"
+    },
+    {
+      "title": "should pass arguments to executed scripts",
+      "suite": "Script Execution",
+      "status": "passed",
+      "duration": 13,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.857Z"
+    },
+    {
+      "title": "should have valid viewport dimensions",
+      "suite": "iPhone 15",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.968Z"
+    },
+    {
+      "title": "should have a valid device scale factor",
+      "suite": "iPhone 15",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.969Z"
+    },
+    {
+      "title": "should have a mobile flag",
+      "suite": "iPhone 15",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.971Z"
+    },
+    {
+      "title": "should have a non-empty user agent",
+      "suite": "iPhone 15",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.972Z"
+    },
+    {
+      "title": "should construct a MobileDriver without error",
+      "suite": "iPhone 15",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.974Z"
+    },
+    {
+      "title": "should have valid viewport dimensions",
+      "suite": "Pixel 8",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.976Z"
+    },
+    {
+      "title": "should have a valid device scale factor",
+      "suite": "Pixel 8",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.977Z"
+    },
+    {
+      "title": "should have a mobile flag",
+      "suite": "Pixel 8",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.980Z"
+    },
+    {
+      "title": "should have a non-empty user agent",
+      "suite": "Pixel 8",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.981Z"
+    },
+    {
+      "title": "should construct a MobileDriver without error",
+      "suite": "Pixel 8",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.983Z"
+    },
+    {
+      "title": "should have valid viewport dimensions",
+      "suite": "iPad Air",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.984Z"
+    },
+    {
+      "title": "should have a valid device scale factor",
+      "suite": "iPad Air",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.985Z"
+    },
+    {
+      "title": "should have a mobile flag",
+      "suite": "iPad Air",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.986Z"
+    },
+    {
+      "title": "should have a non-empty user agent",
+      "suite": "iPad Air",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.987Z"
+    },
+    {
+      "title": "should construct a MobileDriver without error",
+      "suite": "iPad Air",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.989Z"
+    },
+    {
+      "title": "should have valid viewport dimensions",
+      "suite": "Samsung Galaxy S24",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.990Z"
+    },
+    {
+      "title": "should have a valid device scale factor",
+      "suite": "Samsung Galaxy S24",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.990Z"
+    },
+    {
+      "title": "should have a mobile flag",
+      "suite": "Samsung Galaxy S24",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.991Z"
+    },
+    {
+      "title": "should have a non-empty user agent",
+      "suite": "Samsung Galaxy S24",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.992Z"
+    },
+    {
+      "title": "should construct a MobileDriver without error",
+      "suite": "Samsung Galaxy S24",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.993Z"
+    },
+    {
+      "title": "should have valid viewport dimensions",
+      "suite": "iPhone SE",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.995Z"
+    },
+    {
+      "title": "should have a valid device scale factor",
+      "suite": "iPhone SE",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.996Z"
+    },
+    {
+      "title": "should have a mobile flag",
+      "suite": "iPhone SE",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.996Z"
+    },
+    {
+      "title": "should have a non-empty user agent",
+      "suite": "iPhone SE",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.997Z"
+    },
+    {
+      "title": "should construct a MobileDriver without error",
+      "suite": "iPhone SE",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.998Z"
+    },
+    {
+      "title": "should have valid viewport dimensions",
+      "suite": "Nothing Phone 1",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:58.999Z"
+    },
+    {
+      "title": "should have a valid device scale factor",
+      "suite": "Nothing Phone 1",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.000Z"
+    },
+    {
+      "title": "should have a mobile flag",
+      "suite": "Nothing Phone 1",
+      "status": "passed",
+      "duration": 0,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.000Z"
+    },
+    {
+      "title": "should have a non-empty user agent",
+      "suite": "Nothing Phone 1",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.001Z"
+    },
+    {
+      "title": "should construct a MobileDriver without error",
+      "suite": "Nothing Phone 1",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.002Z"
+    },
+    {
+      "title": "should throw for an unsupported device name",
+      "suite": "Error Handling & Edge Cases",
+      "status": "passed",
+      "duration": 2,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.008Z"
+    },
+    {
+      "title": "should throw for an empty device name",
+      "suite": "Error Handling & Edge Cases",
+      "status": "passed",
+      "duration": 2,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.010Z"
+    },
+    {
+      "title": "should throw for a non-existent profiles file",
+      "suite": "Error Handling & Edge Cases",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.011Z"
+    },
+    {
+      "title": "should throw when calling getTitle before start()",
+      "suite": "Error Handling & Edge Cases",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.013Z"
+    },
+    {
+      "title": "should throw when calling navigateTo before start()",
+      "suite": "Error Handling & Edge Cases",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.014Z"
+    },
+    {
+      "title": "should handle stop() when driver was never started",
+      "suite": "Error Handling & Edge Cases",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.015Z"
+    },
+    {
+      "title": "should record and retrieve test results",
+      "suite": "TestResultStore",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.017Z"
+    },
+    {
+      "title": "should compute a correct summary",
+      "suite": "TestResultStore",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.018Z"
+    },
+    {
+      "title": "should save a JSON report to disk",
+      "suite": "TestResultStore",
+      "status": "passed",
+      "duration": 5,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.027Z"
+    },
+    {
+      "title": "should save an HTML report to disk",
+      "suite": "TestResultStore",
+      "status": "passed",
+      "duration": 161,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.190Z"
+    },
+    {
+      "title": "should reset state correctly",
+      "suite": "TestResultStore",
+      "status": "passed",
+      "duration": 1,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.191Z"
+    },
+    {
+      "title": "should escape HTML entities in the report",
+      "suite": "TestResultStore",
+      "status": "passed",
+      "duration": 4,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:18:59.197Z"
+    }
+  ]
+}

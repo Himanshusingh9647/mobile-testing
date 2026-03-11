@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Testing Dashboard</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f6f6f4;
+    --surface: #ffffff;
+    --surface-2: #f0f0ec;
+    --border: #d8d8d3;
+    --text: #171717;
+    --text-dim: #686866;
+    --ink: #0f0f0f;
+    --green: #29774b;
+    --red: #b4463a;
+    --yellow: #a16c1b;
+    --radius: 999px;
+    --radius-card: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    min-height: 100vh;
+    color: var(--text);
+    line-height: 1.55;
+    font-family: "Avenir Next", "Segoe UI", Tahoma, sans-serif;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(255,255,255,0.9), rgba(246,246,244,0.8) 35%, rgba(246,246,244,1) 60%),
+      linear-gradient(180deg, #fafaf9 0%, #f3f3f0 100%);
+  }
+
+  a { color: var(--text); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(23,23,23,0.08);
+    background: rgba(246,246,244,0.78);
+    padding: 1rem 2.1rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .brand {
+    font-family: "Iowan Old Style", "Times New Roman", serif;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+  }
+
+  .top-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.3rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .status-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .topbar .status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid rgba(23,23,23,0.16);
+  }
+
+  .container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 3rem;
+  }
+
+  .hero {
+    text-align: center;
+    margin: 1rem auto 2rem;
+    max-width: 760px;
+    animation: heroIn 0.7s ease-out;
+  }
+
+  .hero h1 {
+    font-family: "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(2.05rem, 5vw, 3.35rem);
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-art {
+    margin: 2.1rem auto 2.4rem;
+    height: 190px;
+    width: min(100%, 820px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.84), rgba(245,245,242,0.85)),
+      repeating-linear-gradient(0deg, rgba(23,23,23,0.05) 0, rgba(23,23,23,0.05) 1px, transparent 1px, transparent 22px),
+      repeating-linear-gradient(90deg, rgba(23,23,23,0.04) 0, rgba(23,23,23,0.04) 1px, transparent 1px, transparent 34px);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8), 0 22px 42px -35px rgba(23,23,23,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-art::before {
+    content: "Testing Architecture View";
+    position: absolute;
+    left: 1.2rem;
+    top: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(23,23,23,0.55);
+  }
+
+  .hero-art svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-art .arch-text {
+    font-family: "Avenir Next", "Segoe UI", Tahoma, sans-serif;
+    font-size: 10px;
+    fill: rgba(23,23,23,0.72);
+    letter-spacing: 0.02em;
+  }
+
+  .tabs {
+    display: flex;
+    width: fit-content;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.25rem;
+    margin: 0 auto 1.55rem;
+    gap: 0.25rem;
+  }
+
+  .tab {
+    padding: 0.54rem 1.05rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    transition: all 0.2s ease;
+  }
+
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: panelIn 0.4s ease; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 1.2rem;
+    box-shadow: 0 10px 30px -26px rgba(23,23,23,0.5);
+  }
+
+  .card h2 {
+    font-size: 0.73rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+  }
+
+  .stats {
+    display: grid;
+    gap: 0.6rem;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    margin-bottom: 1.15rem;
+  }
+
+  .stat {
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 0.8rem 0.75rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,248,246,0.92));
+    text-align: center;
+  }
+
+  .stat .value {
+    font-family: "Iowan Old Style", "Times New Roman", serif;
+    font-size: 1.58rem;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat .label {
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .stat.passed .value { color: var(--green); }
+  .stat.failed .value { color: var(--red); }
+  .stat.skipped .value { color: var(--yellow); }
+
+  .run-section { margin-bottom: 1rem; }
+
+  .run-controls {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) auto auto;
+    gap: 0.65rem;
+    align-items: end;
+  }
+
+  .suite-meta {
+    margin-top: 0.55rem;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    min-height: 1.1rem;
+  }
+
+  .form-group {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.45rem 0.8rem;
+    background: var(--surface-2);
+  }
+
+  .form-group label {
+    font-size: 0.66rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.18rem;
+  }
+
+  .form-group select, .form-group input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.9rem;
+    outline: none;
+    appearance: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.68rem 1.2rem;
+    cursor: pointer;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 16px -13px rgba(23,23,23,0.4);
+  }
+
+  .btn.primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+    min-width: 155px;
+  }
+
+  .btn.primary:hover { background: #242424; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .log-box {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: #fdfdfc;
+    padding: 0.95rem;
+    font-family: "Cascadia Mono", Consolas, monospace;
+    font-size: 0.79rem;
+    color: var(--text-dim);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 380px;
+    overflow-y: auto;
+    line-height: 1.48;
+  }
+
+  .log-box .pass { color: var(--green); font-weight: 600; }
+  .log-box .fail { color: var(--red); font-weight: 600; }
+
+  .section { margin-bottom: 2rem; }
+  .section-title {
+    font-family: "Iowan Old Style", "Times New Roman", serif;
+    font-size: 1.42rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .history-table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 14px; }
+  .history-table th {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-size: 0.66rem;
+    background: var(--surface-2);
+  }
+
+  .history-table td {
+    padding: 0.72rem;
+    border-bottom: 1px solid rgba(216,216,211,0.7);
+    background: var(--surface);
+    font-size: 0.84rem;
+  }
+
+  .history-table tr:hover td { background: #fafaf8; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius);
+    padding: 0.15rem 0.6rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+  }
+
+  .pill.passed {
+    border-color: rgba(41,119,75,0.2);
+    color: var(--green);
+    background: rgba(41,119,75,0.08);
+  }
+
+  .pill.failed {
+    border-color: rgba(180,70,58,0.2);
+    color: var(--red);
+    background: rgba(180,70,58,0.08);
+  }
+
+  .device-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    gap: 0.7rem;
+  }
+
+  .device-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0.8rem;
+    text-align: center;
+  }
+
+  .device-card .name {
+    font-family: "Iowan Old Style", "Times New Roman", serif;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .device-card .spec {
+    font-size: 0.77rem;
+    color: var(--text-dim);
+  }
+
+  .device-card .badge {
+    display: inline-block;
+    margin-top: 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.12rem 0.5rem;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    background: var(--surface-2);
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.65s linear infinite;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 2.4rem 1rem;
+    color: var(--text-dim);
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .topbar {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 0.45rem;
+      padding: 0.85rem 1rem;
+    }
+
+    .top-links { flex-wrap: wrap; gap: 0.8rem; }
+
+    .stats {
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+
+    .run-controls {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-art { height: 150px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="brand">MOBILE LAB</div>
+  <div class="top-links">
+    <a href="#">Suites</a>
+    <a href="#">Reports</a>
+    <a href="#">Devices</a>
+    <a href="#">CI</a>
+  </div>
+  <div class="status-wrap">
+    <span class="status-dot" id="statusDot" style="background:var(--text-dim)"></span>
+    <span class="status-label" id="statusLabel">Idle</span>
+  </div>
+</div>
+
+<div class="container">
+  <section class="hero">
+    <h1>Designed for Reliable Mobile Testing</h1>
+    <p>Run suites, inspect real results, and validate device behavior in one clean workflow. Built for teams shipping fast without losing confidence.</p>
+    <div class="hero-art" aria-label="Testing architecture diagram">
+      <svg viewBox="0 0 820 190" role="img" aria-hidden="true">
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L8,4 L0,8 z" fill="rgba(23,23,23,0.45)"></path>
+          </marker>
+        </defs>
+
+        <rect x="48" y="62" width="136" height="60" rx="8" fill="rgba(255,255,255,0.65)" stroke="rgba(23,23,23,0.24)"></rect>
+        <text x="116" y="88" text-anchor="middle" class="arch-text">Dashboard UI</text>
+        <text x="116" y="104" text-anchor="middle" class="arch-text">Suite Switch</text>
+
+        <rect x="246" y="48" width="150" height="88" rx="8" fill="rgba(255,255,255,0.65)" stroke="rgba(23,23,23,0.24)"></rect>
+        <text x="321" y="74" text-anchor="middle" class="arch-text">Node Server</text>
+        <text x="321" y="90" text-anchor="middle" class="arch-text">/api/run</text>
+        <text x="321" y="106" text-anchor="middle" class="arch-text">/api/results</text>
+
+        <rect x="458" y="48" width="150" height="88" rx="8" fill="rgba(255,255,255,0.65)" stroke="rgba(23,23,23,0.24)"></rect>
+        <text x="533" y="74" text-anchor="middle" class="arch-text">Mocha + Selenium</text>
+        <text x="533" y="90" text-anchor="middle" class="arch-text">4 tests / 62 tests</text>
+        <text x="533" y="106" text-anchor="middle" class="arch-text">Execution Layer</text>
+
+        <rect x="670" y="62" width="108" height="60" rx="8" fill="rgba(255,255,255,0.65)" stroke="rgba(23,23,23,0.24)"></rect>
+        <text x="724" y="90" text-anchor="middle" class="arch-text">Reports</text>
+        <text x="724" y="106" text-anchor="middle" class="arch-text">JSON / HTML</text>
+
+        <line x1="184" y1="92" x2="246" y2="92" stroke="rgba(23,23,23,0.35)" stroke-width="1.2" marker-end="url(#arrow)"></line>
+        <line x1="396" y1="92" x2="458" y2="92" stroke="rgba(23,23,23,0.35)" stroke-width="1.2" marker-end="url(#arrow)"></line>
+        <line x1="608" y1="92" x2="670" y2="92" stroke="rgba(23,23,23,0.35)" stroke-width="1.2" marker-end="url(#arrow)"></line>
+
+        <path d="M724 122 L724 150 L321 150 L321 136" fill="none" stroke="rgba(23,23,23,0.25)" stroke-width="1.1" stroke-dasharray="4 4" marker-end="url(#arrow)"></path>
+        <text x="511" y="165" text-anchor="middle" class="arch-text">Artifacts feed Results History and CI status</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== TABS ===== -->
+  <div class="tabs">
+    <div class="tab active" data-tab="run">Run Tests</div>
+    <div class="tab" data-tab="results">Results History</div>
+    <div class="tab" data-tab="devices">Device Profiles</div>
+  </div>
+
+  <!-- ============================================================
+       TAB 1: RUN TESTS
+       ============================================================ -->
+  <div class="tab-panel active" id="tab-run">
+
+    <!-- Stats -->
+    <div class="stats" id="statsBar">
+      <div class="stat"><div class="value" id="statTotal">—</div><div class="label">Total</div></div>
+      <div class="stat passed"><div class="value" id="statPassed">—</div><div class="label">Passed</div></div>
+      <div class="stat failed"><div class="value" id="statFailed">—</div><div class="label">Failed</div></div>
+      <div class="stat skipped"><div class="value" id="statSkipped">—</div><div class="label">Skipped</div></div>
+      <div class="stat"><div class="value" id="statDuration">—</div><div class="label">Duration</div></div>
+    </div>
+
+    <!-- Run Controls -->
+    <div class="card run-section">
+      <h2>Test Orchestration</h2>
+      <div class="run-controls">
+        <div class="form-group">
+          <label>Suite Selector</label>
+          <select id="suiteSelect" onchange="handleSuiteChange()">
+            <option value="tests/**/*.test.js" data-count="62" data-name="Full Regression">62 tests - Full Regression Pack</option>
+            <option value="examples/basicUsage.js" data-count="4" data-name="Travel Smoke">4 tests - Travel Planner Smoke Pack</option>
+          </select>
+        </div>
+        <button class="btn primary" id="runBtn" onclick="startRun()">
+          Browse Runs
+        </button>
+        <button class="btn" id="refreshBtn" onclick="pollStatus()" title="Refresh status">
+          Refresh
+        </button>
+      </div>
+      <div class="suite-meta" id="suiteMeta">Active suite: 62 tests - Full Regression Pack</div>
+    </div>
+
+    <!-- Live Log -->
+    <div class="card">
+      <h2>Live Output</h2>
+      <div class="log-box" id="logBox">Waiting for a test run...</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TAB 2: RESULTS HISTORY
+       ============================================================ -->
+  <div class="tab-panel" id="tab-results">
+    <div class="section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h2 class="section-title" style="margin:0;">Saved Reports</h2>
+        <button class="btn" onclick="loadResults()">&#8635; Reload</button>
+      </div>
+      <div id="resultsContainer">
+        <div class="empty">Loading results…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TAB 3: DEVICE PROFILES
+       ============================================================ -->
+  <div class="tab-panel" id="tab-devices">
+    <div class="section">
+      <h2 class="section-title">Available Device Profiles</h2>
+      <div class="device-grid" id="deviceGrid">
+        <div class="empty">Loading devices…</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ========== TAB SWITCHING ========== */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    if (tab.dataset.tab === 'results') loadResults();
+    if (tab.dataset.tab === 'devices') loadDevices();
+  });
+});
+
+/* ========== RUN TESTS ========== */
+let pollTimer = null;
+
+function handleSuiteChange() {
+  const suiteSelect = document.getElementById('suiteSelect');
+  const chosen = suiteSelect.options[suiteSelect.selectedIndex];
+  const count = chosen.dataset.count || '?';
+  const name = chosen.dataset.name || 'Custom Suite';
+
+  const suiteMeta = document.getElementById('suiteMeta');
+  suiteMeta.textContent = `Active suite: ${count} tests - ${name}`;
+}
+
+async function startRun() {
+  const suite = document.getElementById('suiteSelect').value;
+  const chosen = document.getElementById('suiteSelect').options[document.getElementById('suiteSelect').selectedIndex];
+  const expectedCount = chosen.dataset.count || '?';
+  const btn = document.getElementById('runBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Running...';
+
+  document.getElementById('logBox').textContent = `Starting ${expectedCount}-test suite run...\n`;
+  updateStatusUI('running');
+
+  try {
+    const res = await fetch('/api/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ suite }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      document.getElementById('logBox').textContent = 'Error: ' + (data.error || 'Unknown error');
+      resetRunBtn();
+      return;
+    }
+    // Start polling
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = setInterval(pollStatus, 2000);
+  } catch (err) {
+    document.getElementById('logBox').textContent = 'Network error: ' + err.message;
+    resetRunBtn();
+  }
+}
+
+async function pollStatus() {
+  try {
+    const res = await fetch('/api/run/status');
+    const data = await res.json();
+
+    if (data.status === 'idle') {
+      updateStatusUI('idle');
+      return;
+    }
+
+    // Colorize log
+    const logBox = document.getElementById('logBox');
+    logBox.innerHTML = colorizeLog(data.log || '');
+    logBox.scrollTop = logBox.scrollHeight;
+
+    updateStatusUI(data.status);
+
+    if (data.status !== 'running') {
+      if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+      resetRunBtn();
+      // Refresh stats from latest result
+      loadLatestStats();
+    }
+  } catch { /* ignore transient fetch errors */ }
+}
+
+function colorizeLog(text) {
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/(✔[^\n]*)/g, '<span class="pass">$1</span>')
+    .replace(/(passing[^\n]*)/gi, '<span class="pass">$1</span>')
+    .replace(/(✗[^\n]*|failing[^\n]*|AssertionError[^\n]*|Error[^\n]*)/gi, '<span class="fail">$1</span>');
+}
+
+function resetRunBtn() {
+  const btn = document.getElementById('runBtn');
+  btn.disabled = false;
+  btn.innerHTML = 'Browse Runs';
+}
+
+function updateStatusUI(status) {
+  const dot = document.getElementById('statusDot');
+  const label = document.getElementById('statusLabel');
+  const colors = { running: 'var(--yellow)', passed: 'var(--green)', failed: 'var(--red)', idle: 'var(--text-dim)', error: 'var(--red)' };
+  const labels = { running: 'Running...', passed: 'Passed', failed: 'Failed', idle: 'Idle', error: 'Error' };
+  dot.style.background = colors[status] || 'var(--text-dim)';
+  label.textContent = labels[status] || status;
+}
+
+/* ========== LOAD LATEST STATS ========== */
+async function loadLatestStats() {
+  try {
+    const res = await fetch('/api/results');
+    const data = await res.json();
+    if (data.length && data[0].summary) {
+      const s = data[0].summary;
+      document.getElementById('statTotal').textContent = s.total;
+      document.getElementById('statPassed').textContent = s.passed;
+      document.getElementById('statFailed').textContent = s.failed;
+      document.getElementById('statSkipped').textContent = s.skipped;
+      document.getElementById('statDuration').textContent = (s.duration / 1000).toFixed(1) + 's';
+    }
+  } catch { /* OK */ }
+}
+
+/* ========== RESULTS HISTORY ========== */
+async function loadResults() {
+  const container = document.getElementById('resultsContainer');
+  try {
+    const res = await fetch('/api/results');
+    const data = await res.json();
+    if (!data.length) {
+      container.innerHTML = '<div class="empty">No test results found. Run a test first!</div>';
+      return;
+    }
+
+    let html = '<table class="history-table"><thead><tr>';
+    html += '<th>Date</th><th>Suite</th><th>Total</th><th>Passed</th><th>Failed</th><th>Status</th><th>Report</th></tr></thead><tbody>';
+
+    for (const r of data) {
+      if (r.error) continue;
+      const date = r.startTime ? new Date(r.startTime).toLocaleString() : '—';
+      const s = r.summary || {};
+      const status = (s.failed || 0) > 0 ? 'failed' : 'passed';
+      const htmlFile = r.file.replace('results-', 'report-').replace('.json', '.html');
+      html += `<tr>
+        <td>${escapeHtml(date)}</td>
+        <td>${escapeHtml(r.suiteName || '—')}</td>
+        <td>${s.total || 0}</td>
+        <td style="color:var(--green)">${s.passed || 0}</td>
+        <td style="color:var(--red)">${s.failed || 0}</td>
+        <td><span class="pill ${status}">${status}</span></td>
+        <td><a href="/api/results/${encodeURIComponent(htmlFile)}" target="_blank">View</a></td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    container.innerHTML = html;
+  } catch (err) {
+    container.innerHTML = '<div class="empty">Failed to load results: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+/* ========== DEVICE PROFILES ========== */
+async function loadDevices() {
+  const grid = document.getElementById('deviceGrid');
+  try {
+    const res = await fetch('/api/devices');
+    const data = await res.json();
+    const keys = Object.keys(data);
+
+    if (!keys.length) {
+      grid.innerHTML = '<div class="empty">No device profiles found.</div>';
+      return;
+    }
+
+    grid.innerHTML = keys.map(key => {
+      const d = data[key];
+      const isIos = d.userAgent.includes('iPhone') || d.userAgent.includes('iPad');
+      return `<div class="device-card">
+        <div class="name">${escapeHtml(d.deviceName)}</div>
+        <div class="spec">${d.width} &times; ${d.height} &nbsp;@${d.deviceScaleFactor}x</div>
+        <div class="badge">${isIos ? 'iOS' : 'Android'}</div>
+      </div>`;
+    }).join('');
+  } catch (err) {
+    grid.innerHTML = '<div class="empty">Failed to load devices.</div>';
+  }
+}
+
+function escapeHtml(str) {
+  const el = document.createElement('span');
+  el.textContent = str;
+  return el.innerHTML;
+}
+
+/* ========== INIT ========== */
+handleSuiteChange();
+loadLatestStats();
+loadDevices();
+pollStatus();
+</script>
+</body>
+</html>

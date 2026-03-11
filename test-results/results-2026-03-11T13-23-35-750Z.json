@@ -1,0 +1,50 @@
+{
+  "suiteName": "Mobile Web Testing Framework",
+  "startTime": "2026-03-11T13:23:35.750Z",
+  "endTime": "2026-03-11T13:23:43.973Z",
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 8223
+  },
+  "results": [
+    {
+      "title": "should successfully load the AI Travel app on an emulated iPhone",
+      "suite": "Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15",
+      "status": "passed",
+      "duration": 2597,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:23:40.158Z"
+    },
+    {
+      "title": "should verify the user agent is correctly spoofed as an iPhone",
+      "suite": "Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15",
+      "status": "passed",
+      "duration": 28,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:23:40.193Z"
+    },
+    {
+      "title": "should perform a swipe-up gesture to scroll down the travel itinerary or landing page",
+      "suite": "Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15",
+      "status": "passed",
+      "duration": 1245,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:23:41.439Z"
+    },
+    {
+      "title": "should identify and tap a primary interactive element (e.g., a button)",
+      "suite": "Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15",
+      "status": "passed",
+      "duration": 1336,
+      "error": null,
+      "stack": null,
+      "timestamp": "2026-03-11T13:23:42.776Z"
+    }
+  ]
+}

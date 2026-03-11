@@ -7,7 +7,9 @@
   "scripts": {
     "test": "mocha tests/**/*.test.js --timeout 30000",
     "test:verbose": "mocha tests/**/*.test.js --timeout 30000 --reporter spec",
+    "test:report": "mocha tests/**/*.test.js --timeout 30000 --require ./src/utils/mochaReporterHook.js",
     "example": "mocha examples/basicUsage.js --timeout 30000",
+    "dashboard": "node dashboard/server.js",
     "lint": "eslint src/ tests/"
   },
   "keywords": [

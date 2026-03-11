@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Report — Mobile Web Testing Framework</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+         background: #0d1117; color: #c9d1d9; padding: 2rem; }
+  h1 { margin-bottom: 0.5rem; color: #f0f6fc; }
+  .meta { color: #8b949e; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .summary { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .badge { padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; }
+  .badge-total    { background: #161b22; border: 1px solid #30363d; }
+  .badge-passed   { background: #0d1f0d; border: 1px solid #238636; color: #3fb950; }
+  .badge-failed   { background: #1f0d0d; border: 1px solid #da3633; color: #f85149; }
+  .badge-skipped  { background: #1f1a0d; border: 1px solid #9e6a03; color: #d29922; }
+  .badge-duration { background: #161b22; border: 1px solid #30363d; color: #8b949e; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+  th { text-align: left; padding: 0.75rem 1rem; background: #161b22;
+       border-bottom: 2px solid #30363d; color: #8b949e; font-size: 0.85rem;
+       text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 0.65rem 1rem; border-bottom: 1px solid #21262d; font-size: 0.9rem; }
+  .status-passed { color: #3fb950; font-weight: 600; }
+  .status-failed { color: #f85149; font-weight: 600; }
+  .status-skipped { color: #d29922; font-weight: 600; }
+  .row-failed { background: rgba(248,81,73,0.05); }
+  .error-cell { font-family: 'SF Mono', monospace; font-size: 0.8rem; color: #f85149;
+                max-width: 400px; word-break: break-word; }
+  .banner { padding: 1rem; border-radius: 6px; text-align: center; font-size: 1.1rem; font-weight: 600; }
+  .banner.pass { background: #0d1f0d; border: 1px solid #238636; color: #3fb950; }
+  .banner.fail { background: #1f0d0d; border: 1px solid #da3633; color: #f85149; }
+</style>
+</head>
+<body>
+  <h1>Test Report</h1>
+  <p class="meta">Mobile Web Testing Framework &mdash; 3/11/2026, 6:58:22 PM</p>
+
+  <div class="summary">
+    <span class="badge badge-total">Total: 62</span>
+    <span class="badge badge-passed">Passed: 62</span>
+    <span class="badge badge-failed">Failed: 0</span>
+    <span class="badge badge-skipped">Skipped: 0</span>
+    <span class="badge badge-duration">Duration: 19.80s</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Suite</th><th>Test</th><th>Status</th><th>Duration</th><th>Error</th></tr>
+    </thead>
+    <tbody>
+      <tr class="row-passed">
+        <td>Device Profile</td>
+        <td>should load the correct device profile for iPhone 15</td>
+        <td class="status-passed">PASSED</td>
+        <td>5 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Device Profile</td>
+        <td>should return a copy of the profile (immutable)</td>
+        <td class="status-passed">PASSED</td>
+        <td>2 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Device Profile</td>
+        <td>should report the correct emulated user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>22 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Navigation</td>
+        <td>should navigate to example.com and verify the page title</td>
+        <td class="status-passed">PASSED</td>
+        <td>763 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Navigation</td>
+        <td>should return the correct current URL after navigation</td>
+        <td class="status-passed">PASSED</td>
+        <td>43 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Navigation</td>
+        <td>should handle navigation via the MobileDriver API</td>
+        <td class="status-passed">PASSED</td>
+        <td>36 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should perform a swipe-up gesture without errors</td>
+        <td class="status-passed">PASSED</td>
+        <td>727 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should perform a swipe-down gesture without errors</td>
+        <td class="status-passed">PASSED</td>
+        <td>701 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should perform a swipe-left gesture without errors</td>
+        <td class="status-passed">PASSED</td>
+        <td>727 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should perform a swipe-right gesture without errors</td>
+        <td class="status-passed">PASSED</td>
+        <td>804 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should scroll down using scrollByPixels utility</td>
+        <td class="status-passed">PASSED</td>
+        <td>429 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should scroll by a custom pixel amount</td>
+        <td class="status-passed">PASSED</td>
+        <td>429 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Touch Gestures</td>
+        <td>should tap the &quot;More information...&quot; link and navigate</td>
+        <td class="status-passed">PASSED</td>
+        <td>11634 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Screenshots</td>
+        <td>should take a screenshot and return base64 data</td>
+        <td class="status-passed">PASSED</td>
+        <td>479 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Screenshots</td>
+        <td>should save a screenshot to disk</td>
+        <td class="status-passed">PASSED</td>
+        <td>328 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Viewport &amp; Responsive</td>
+        <td>should report mobile-sized viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>60 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Viewport &amp; Responsive</td>
+        <td>should report a mobile device pixel ratio</td>
+        <td class="status-passed">PASSED</td>
+        <td>14 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Viewport &amp; Responsive</td>
+        <td>should report touch support as enabled</td>
+        <td class="status-passed">PASSED</td>
+        <td>14 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Script Execution</td>
+        <td>should execute arbitrary JavaScript and return results</td>
+        <td class="status-passed">PASSED</td>
+        <td>14 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Script Execution</td>
+        <td>should pass arguments to executed scripts</td>
+        <td class="status-passed">PASSED</td>
+        <td>16 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone 15</td>
+        <td>should have valid viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone 15</td>
+        <td>should have a valid device scale factor</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone 15</td>
+        <td>should have a mobile flag</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone 15</td>
+        <td>should have a non-empty user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>2 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone 15</td>
+        <td>should construct a MobileDriver without error</td>
+        <td class="status-passed">PASSED</td>
+        <td>2 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Pixel 8</td>
+        <td>should have valid viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Pixel 8</td>
+        <td>should have a valid device scale factor</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Pixel 8</td>
+        <td>should have a mobile flag</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Pixel 8</td>
+        <td>should have a non-empty user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Pixel 8</td>
+        <td>should construct a MobileDriver without error</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPad Air</td>
+        <td>should have valid viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPad Air</td>
+        <td>should have a valid device scale factor</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPad Air</td>
+        <td>should have a mobile flag</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPad Air</td>
+        <td>should have a non-empty user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPad Air</td>
+        <td>should construct a MobileDriver without error</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Samsung Galaxy S24</td>
+        <td>should have valid viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Samsung Galaxy S24</td>
+        <td>should have a valid device scale factor</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Samsung Galaxy S24</td>
+        <td>should have a mobile flag</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Samsung Galaxy S24</td>
+        <td>should have a non-empty user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Samsung Galaxy S24</td>
+        <td>should construct a MobileDriver without error</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone SE</td>
+        <td>should have valid viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone SE</td>
+        <td>should have a valid device scale factor</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone SE</td>
+        <td>should have a mobile flag</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone SE</td>
+        <td>should have a non-empty user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>iPhone SE</td>
+        <td>should construct a MobileDriver without error</td>
+        <td class="status-passed">PASSED</td>
+        <td>2 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Nothing Phone 1</td>
+        <td>should have valid viewport dimensions</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Nothing Phone 1</td>
+        <td>should have a valid device scale factor</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Nothing Phone 1</td>
+        <td>should have a mobile flag</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Nothing Phone 1</td>
+        <td>should have a non-empty user agent</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Nothing Phone 1</td>
+        <td>should construct a MobileDriver without error</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Error Handling &amp; Edge Cases</td>
+        <td>should throw for an unsupported device name</td>
+        <td class="status-passed">PASSED</td>
+        <td>3 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Error Handling &amp; Edge Cases</td>
+        <td>should throw for an empty device name</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Error Handling &amp; Edge Cases</td>
+        <td>should throw for a non-existent profiles file</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Error Handling &amp; Edge Cases</td>
+        <td>should throw when calling getTitle before start()</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Error Handling &amp; Edge Cases</td>
+        <td>should throw when calling navigateTo before start()</td>
+        <td class="status-passed">PASSED</td>
+        <td>2 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Error Handling &amp; Edge Cases</td>
+        <td>should handle stop() when driver was never started</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>TestResultStore</td>
+        <td>should record and retrieve test results</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>TestResultStore</td>
+        <td>should compute a correct summary</td>
+        <td class="status-passed">PASSED</td>
+        <td>1 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>TestResultStore</td>
+        <td>should save a JSON report to disk</td>
+        <td class="status-passed">PASSED</td>
+        <td>8 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>TestResultStore</td>
+        <td>should save an HTML report to disk</td>
+        <td class="status-passed">PASSED</td>
+        <td>160 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>TestResultStore</td>
+        <td>should reset state correctly</td>
+        <td class="status-passed">PASSED</td>
+        <td>0 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>TestResultStore</td>
+        <td>should escape HTML entities in the report</td>
+        <td class="status-passed">PASSED</td>
+        <td>4 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="banner pass">
+    ALL TESTS PASSED
+  </div>
+</body>
+</html>

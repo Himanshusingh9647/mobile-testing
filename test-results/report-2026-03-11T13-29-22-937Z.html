@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Report — Mobile Web Testing Framework</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+         background: #0d1117; color: #c9d1d9; padding: 2rem; }
+  h1 { margin-bottom: 0.5rem; color: #f0f6fc; }
+  .meta { color: #8b949e; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .summary { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .badge { padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; }
+  .badge-total    { background: #161b22; border: 1px solid #30363d; }
+  .badge-passed   { background: #0d1f0d; border: 1px solid #238636; color: #3fb950; }
+  .badge-failed   { background: #1f0d0d; border: 1px solid #da3633; color: #f85149; }
+  .badge-skipped  { background: #1f1a0d; border: 1px solid #9e6a03; color: #d29922; }
+  .badge-duration { background: #161b22; border: 1px solid #30363d; color: #8b949e; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+  th { text-align: left; padding: 0.75rem 1rem; background: #161b22;
+       border-bottom: 2px solid #30363d; color: #8b949e; font-size: 0.85rem;
+       text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 0.65rem 1rem; border-bottom: 1px solid #21262d; font-size: 0.9rem; }
+  .status-passed { color: #3fb950; font-weight: 600; }
+  .status-failed { color: #f85149; font-weight: 600; }
+  .status-skipped { color: #d29922; font-weight: 600; }
+  .row-failed { background: rgba(248,81,73,0.05); }
+  .error-cell { font-family: 'SF Mono', monospace; font-size: 0.8rem; color: #f85149;
+                max-width: 400px; word-break: break-word; }
+  .banner { padding: 1rem; border-radius: 6px; text-align: center; font-size: 1.1rem; font-weight: 600; }
+  .banner.pass { background: #0d1f0d; border: 1px solid #238636; color: #3fb950; }
+  .banner.fail { background: #1f0d0d; border: 1px solid #da3633; color: #f85149; }
+</style>
+</head>
+<body>
+  <h1>Test Report</h1>
+  <p class="meta">Mobile Web Testing Framework &mdash; 3/11/2026, 6:59:22 PM</p>
+
+  <div class="summary">
+    <span class="badge badge-total">Total: 4</span>
+    <span class="badge badge-passed">Passed: 4</span>
+    <span class="badge badge-failed">Failed: 0</span>
+    <span class="badge badge-skipped">Skipped: 0</span>
+    <span class="badge badge-duration">Duration: 7.32s</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Suite</th><th>Test</th><th>Status</th><th>Duration</th><th>Error</th></tr>
+    </thead>
+    <tbody>
+      <tr class="row-passed">
+        <td>Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15</td>
+        <td>should successfully load the AI Travel app on an emulated iPhone</td>
+        <td class="status-passed">PASSED</td>
+        <td>2742 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15</td>
+        <td>should verify the user agent is correctly spoofed as an iPhone</td>
+        <td class="status-passed">PASSED</td>
+        <td>19 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15</td>
+        <td>should perform a swipe-up gesture to scroll down the travel itinerary or landing page</td>
+        <td class="status-passed">PASSED</td>
+        <td>944 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+
+      <tr class="row-passed">
+        <td>Mobile Web Testing Framework — Wandr AI / Travel Planner on iPhone 15</td>
+        <td>should identify and tap a primary interactive element (e.g., a button)</td>
+        <td class="status-passed">PASSED</td>
+        <td>1209 ms</td>
+        <td class="error-cell">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="banner pass">
+    ALL TESTS PASSED
+  </div>
+</body>
+</html>
