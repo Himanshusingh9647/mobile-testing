@@ -75,6 +75,9 @@ describe('Mobile Web Testing Framework — iPhone 15 Emulation', function () {
   it('should scroll down using scrollByPixels utility', async function () {
     // Reset scroll position first
     await driver.executeScript('window.scrollTo(0, 0)');
+    // Ensure the page is tall enough to allow scrolling (some test pages
+    // like example.com are small and won't scroll by default).
+    await driver.executeScript("document.body.style.minHeight = '2000px'");
     await scrollByPixels(driver, 200);
 
     const scrollY = await driver.executeScript('return window.scrollY');
