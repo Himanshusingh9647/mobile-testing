@@ -55,7 +55,37 @@ mobile-web-testing-framework/
 │   └── example.test.js              # Mocha + Chai integration test
 │
 └── examples/
-    └── basicUsage.js                # Standalone usage example
+
+## Dashboard UI (Web Interface)
+
+This project includes a modern dashboard for running, monitoring, and viewing test results and device profiles — all from your browser.
+
+### Launch the Dashboard
+
+```bash
+npm run dashboard
+```
+
+By default, the dashboard will be available at [http://localhost:3000](http://localhost:3000).
+
+### Dashboard Features
+
+- **Run test suites** with a single click
+- **Live output**: See real-time logs as tests execute
+- **Results history**: Browse and view past test reports (HTML/JSON)
+- **Device profiles**: Inspect all available device emulation profiles
+- **No dependencies**: The dashboard server uses only Node.js built-ins
+
+### Usage Steps
+1. Start the dashboard: `npm run dashboard`
+2. Open your browser to [http://localhost:3000](http://localhost:3000)
+3. Use the tabs to:
+  - Run tests (choose suite, start run, view live log)
+  - View results history and open reports
+  - Browse device profiles
+
+> **Note:** The dashboard is ideal for local development, demos, and CI result inspection. All test runs and results are stored in the `test-results/` folder.
+
 ```
 
 ---
